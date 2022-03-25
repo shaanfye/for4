@@ -20,7 +20,12 @@ export default function EventInvite(props) {
     const ownergroup = groupdata;
     console.log(ownergroup);
     //let friend = ownergroup.find(o=> console.log(o.friendname));
-    let friend = ownergroup.find(o=> o.friendname.toLowerCase() === props.guestname.toLowerCase());
+    var friend;
+    if(ownergroup != null){
+        friend = ownergroup.find(o=> o.friendname.toLowerCase() === props.guestname.toLowerCase());
+    } else{
+        friend = null;
+    }
     console.log(friend);
     console.log(obj);
 
