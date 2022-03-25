@@ -27,7 +27,8 @@ export default async (req, res) => {
     for (const friend of friends){
       console.log(friend.number);
       console.log(friend.friendname);
-      console.log(alreadygoing.some(element => element.friendname === friend.friendname.toLowerCase()));
+      // need if statement there
+      //console.log(alreadygoing.some(element => element.friendname === friend.friendname.toLowerCase()));
       let link = `${baseURL}/event/${eventid}?guest=${friend.friendname}&owner=${req.body.name}`;
 
       let _message = `Tonight, we welcome you, ${friend.friendname} to ${req.body.eventname} at ${req.body.date} hosted by ${req.body.name}. Soon you can click ${link} to RSVP. GodFye wins`;
