@@ -1,10 +1,7 @@
-import clientPromise from "../../lib/mongodb";
+
 
 export default async (req, res) => {
-    const client = await clientPromise;
-    const db = client.db("sample_mflix");
-
-    const collection = db.collection('events');
+ 
 
     // const query = { name: req.body.name };
     // const update = { $set: { name: req.body.name, people: req.body.people, event: req.body.event, date: req.body.date}};
