@@ -1,18 +1,24 @@
 import Head from 'next/head'
 import FormItem from '../components/form'
 import clientPromise from '../lib/mongodb'
+import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Home({ isConnected }) {
+  const [name, setName] = useState('');
+
+  
+  
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>For4 Organizer</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js with MongoDB!</a>
+          <a>Welcome to Your Event Organizer 4For</a>
         </h1>
         <FormItem />
 
@@ -24,6 +30,15 @@ export default function Home({ isConnected }) {
             for instructions.
           </h2>
         )}
+
+        <div className="grid">
+        <input type="text" name="user" placeholder="Enter your name" onChange={(e) => setName(e.target.value)}/>
+          <Link className="card" href={`/events?name=${name}`}>
+            <a> Test click</a>
+          </Link>
+        </div>
+
+
 
         <p className="description">
           Get started by editing <code>pages/index.js</code>

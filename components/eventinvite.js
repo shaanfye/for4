@@ -15,16 +15,19 @@ export default function EventInvite(props) {
 
     // if the user is IN confirmed, render " you are confirmed"
     const friendlist = data.confirmed;
-    let obj = friendlist.find(o=> o.friendname === props.guestname);
+    // need to check
+    let obj;
+    if(friendlist != null){
+        obj = friendlist.find(o=> o.friendname === props.guestname);
+    }
+
     // check if person in the group
     const ownergroup = groupdata;
     console.log(ownergroup);
     //let friend = ownergroup.find(o=> console.log(o.friendname));
-    var friend;
+    let friend;
     if(ownergroup != null){
         friend = ownergroup.find(o=> o.friendname.toLowerCase() === props.guestname.toLowerCase());
-    } else{
-        friend = null;
     }
     console.log(friend);
     console.log(obj);

@@ -23,7 +23,7 @@ export default async (req, res) => {
     console.log(results.friends);
 
     let friends = results.friends;
-
+    let sidlist = ["test"];
     for (const friend of friends){
       console.log(friend.number);
       console.log(friend.friendname);
@@ -32,21 +32,29 @@ export default async (req, res) => {
       let link = `${baseURL}/event/${eventid}?guest=${friend.friendname}&owner=${req.body.name}`;
 
       let _message = `Tonight, we welcome you, ${friend.friendname} to ${req.body.eventname} at ${req.body.date} hosted by ${req.body.name}. Soon you can click ${link} to RSVP. GodFye wins`;
-      
-      twilioClient.messages 
+      let holder;
+      let message = await twilioClient.messages 
       .create({
         messagingServiceSid: messageSid,         
          to: friend.number, 
          body: _message
-       }) 
-      .then(message => console.log(message.sid)) 
-      .done();
+       });
+       sidlist.push(message.sid);
+
+      // .then(message => {
+      //   //sidlist.push(String(message.sid));
+      //   holder = message.sid;
+      //   sidlist.push(holder);
+      //   console.log(message.sid);
+      // })
+      // .done();
     }
 
-    res.json("Added");
+    res.send(sidlist);
     console.log(req.body);
     await client.close();
     //res.status(200).json({ user: 'Ada Lovelace' })
   }
+
 
   
