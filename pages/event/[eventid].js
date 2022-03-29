@@ -17,6 +17,8 @@ export default function EventLandingPage(props) {
             guest = pid.guest;
             owner = pid.owner;
             eventid = pid.eventid;
+            console.log(guest);
+
             return <EventInvite guestname={guest} ownername={owner} eventid={eventid} />
 
         }
