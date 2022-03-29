@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import useSWR from 'swr';
 import OneEvent from './oneevent';
 import TwilioButton from './twilio/twiliobutton';
+import CalButton from './buttons/calbutton';
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 const fetcher2 = (...args) => fetch(...args).then((res) => res.json())
 const ics = require('ics');
@@ -27,14 +28,9 @@ export default function EventLoader(props) {
         blob = new Blob([value], { type: 'text/calendar;charset=utf-8' });
     })
     
-
-
-  
     // render data
     console.log(groupdata);
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'2-digit', minute:'2-digit', hour12:true };
-    var easydate = new Date(data.date).toLocaleDateString([],options);
-
     return <ul> 
         {
             data.map((event) =>
@@ -47,12 +43,14 @@ export default function EventLoader(props) {
                 eventid={event._id} 
                 maxpeople={event.people}
                 alreadygoing={event.confirmed}/>
-                <a href={URL.createObjectURL(blob)}> Download</a>
+                <CalButton 
+                date={new Date(event.date)}
+                host={props.name} 
+                eventname={event.event} 
+                eventid={event._id} 
+                maxpeople={event.people}
+                alreadygoing={event.confirmed}/>
             </li>
         )}
     </ul>  
 }
-
-// if(event.confirmed != null){
-//     event.confirmed.map((innerEvent) => {<li>{innerEvent.friendname} and {innerEvent.decision}</li>})
-// }   
