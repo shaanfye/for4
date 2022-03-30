@@ -22,6 +22,23 @@ export default function Home({ isConnected }) {
         </h1>
         <FormItem />
 
+
+
+        <div className="grid">
+        <h3>Events</h3>
+        <input type="text" name="user" placeholder="Enter your name" onChange={(e) => setName(e.target.value)}/>
+          <Link className="card" href={`/events?name=${name}`}>
+            Click to See your Events
+          </Link>
+        </div>
+        <div className="grid">
+        <h3>Groups</h3>
+        <input type="text" name="user" placeholder="Enter your name" onChange={(e) => setName(e.target.value)}/>
+          <Link className="card" href={`/friends?name=${name}`}>
+            Click to See your Groups
+          </Link>
+        </div>
+
         {isConnected ? (
           <h2 className="subtitle">You are connected to MongoDB</h2>
         ) : (
@@ -30,13 +47,6 @@ export default function Home({ isConnected }) {
             for instructions.
           </h2>
         )}
-
-        <div className="grid">
-        <input type="text" name="user" placeholder="Enter your name" onChange={(e) => setName(e.target.value)}/>
-          <Link className="card" href={`/events?name=${name}`}>
-            <a> Test click</a>
-          </Link>
-        </div>
 
 
 

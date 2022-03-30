@@ -7,7 +7,7 @@ function CalButton(props) {
     var hour = props.date.getHours();
     var min = props.date.getMinutes();
     const event = {
-        start: [year, month, date, hour, min],
+        start: [year, month+1, date, hour, min],
         duration: { hours: 2, minutes: 30 },
         title: props.eventname,
         description: 'To be filled in later',

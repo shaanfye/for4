@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import OneEvent from './oneevent';
 import TwilioButton from './twilio/twiliobutton';
 import CalButton from './buttons/calbutton';
+import Link from 'next/link';
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 const fetcher2 = (...args) => fetch(...args).then((res) => res.json())
 const ics = require('ics');
@@ -31,7 +32,9 @@ export default function EventLoader(props) {
     // render data
     console.log(groupdata);
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'2-digit', minute:'2-digit', hour12:true };
-    return <ul> 
+    return <Fragment>
+        <div><Link href='/'>Return Home</Link></div>
+        <ul> 
         {
             data.map((event) =>
                 <li>
@@ -52,5 +55,5 @@ export default function EventLoader(props) {
                 alreadygoing={event.confirmed}/>
             </li>
         )}
-    </ul>  
+    </ul></Fragment>  
 }

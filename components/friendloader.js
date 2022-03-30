@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+import Link from 'next/link';
 import useSWR from 'swr';
 import FriendForm from './friendform';
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
@@ -16,7 +18,8 @@ export default function FriendLoader(props) {
     // render data
     console.log(data);
 
-    return( <section> 
+    return( <Fragment>
+    <div><Link href='/'>Return Home</Link></div>
     <h1>Group One to be made dynamic later</h1>
     <ul> 
         {data.map((event) => {
@@ -24,6 +27,6 @@ export default function FriendLoader(props) {
         })}
     </ul>
     <FriendForm name = {props.name}/>
-    </section>)
+    </Fragment>)
 
 }
