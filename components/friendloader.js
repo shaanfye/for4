@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import useSWR from 'swr';
 import FriendForm from './friendform';
+import DeleteFriend from './deletefriend';
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 
@@ -23,7 +24,7 @@ export default function FriendLoader(props) {
     <h1>Group One to be made dynamic later</h1>
     <ul> 
         {data.map((event) => {
-            return(<li><p>{event.friendname} and the number is {event.number}</p></li>)
+            return(<li><p>{event.friendname} and the number is {event.number}<DeleteFriend name = {props.name} number = {event.number} removalfriend = {event.friendname}/></p></li>)
         })}
     </ul>
     <FriendForm name = {props.name}/>
